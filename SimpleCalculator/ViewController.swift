@@ -14,6 +14,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       get {
+          return .portrait
+       }
+    }
 
 }
 

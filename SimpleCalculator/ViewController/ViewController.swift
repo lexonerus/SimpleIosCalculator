@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UITextField!
     
     // MARK: Properties
-    private let calc = Calculator.shared
     private var currentOperation = Operation.noAction
     private var currentNumber   = "0"
     private var firstNumber     = 0.0

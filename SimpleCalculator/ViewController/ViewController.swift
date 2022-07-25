@@ -37,6 +37,12 @@ class ViewController: UIViewController {
         }
     }
     
+    func afterOperation() {
+        updateDisplay(text: result)
+        firstNumber = Double(result)!
+        currentNumber = "0"
+    }
+    
     func numberPressed(number: Int) {
         if currentNumber != "0" {
             currentNumber.append(String(number))
@@ -56,40 +62,40 @@ class ViewController: UIViewController {
     }
     
     func makeCalculation(operation: Operation) {
+        
         if currentOperation != .noAction {
             if currentNumber != "0" {
                 secondNumber = Double(currentNumber)!
-                currentNumber = "0"
                 
-                switch currentOperation {
+                switch operation {
+                case .noAction:
+                    print("No action")
                 case .addition:
-                    result = "\(firstNumber + secondNumber)"
+                    result = String(firstNumber + secondNumber)
+                    afterOperation()
                 case .substraction:
-                    result = "\(firstNumber - secondNumber)"
-                case .multiplication:
-                    result = String(firstNumber * secondNumber)
+                    result = String(firstNumber - secondNumber)
+                    afterOperation()
                 case .division:
                     result = String(firstNumber / secondNumber)
+                    afterOperation()
+                case .multiplication:
+                    result = String(firstNumber * secondNumber)
+                    afterOperation()
                 case .changeSign:
-                    print(0)
+                    print("Change sign")
                 case .percent:
-                    print(0)
-                default:
-                    print(9)
+                    print("Find percent")
                 }
-                
-                firstNumber = Double(result)!
-                if (Double(result)!.truncatingRemainder(dividingBy: 1) == 0) {
-                    result = String(Int(Double(result)!))
-                }
-                updateDisplay(text: result)
                 
             }
         } else {
-            firstNumber         = Double(currentNumber)!
-            currentNumber       = "0"
-            currentOperation    = operation
+            firstNumber = Double(currentNumber)!
+            currentNumber = "0"
+            updateDisplay(text: currentNumber)
+            currentOperation = operation
         }
+
     }
     
     // MARK: Button actions
@@ -97,29 +103,28 @@ class ViewController: UIViewController {
         acAction()
     }
     @IBAction func changeSign(_ sender: Any) {
-        currentOperation = .changeSign
-        makeCalculation(operation: currentOperation)
+        currentOperation = .noAction
+        makeCalculation(operation: .changeSign)
     }
     @IBAction func percent(_ sender: Any) {
-        currentOperation = .percent
-        makeCalculation(operation: currentOperation)
+        currentOperation = .noAction
+        makeCalculation(operation: .percent)
     }
     @IBAction func division(_ sender: Any) {
-        currentOperation = .division
-        makeCalculation(operation: currentOperation)
+        currentOperation = .noAction
+        makeCalculation(operation: .division)
     }
     @IBAction func multiplication(_ sender: Any) {
-        currentOperation = .multiplication
-        makeCalculation(operation: currentOperation)
+        currentOperation = .noAction
+        makeCalculation(operation: .multiplication)
     }
     @IBAction func substraction(_ sender: Any) {
-        currentOperation = .substraction
-        makeCalculation(operation: currentOperation)
+        currentOperation = .noAction
+        makeCalculation(operation: .substraction)
     }
     @IBAction func addition(_ sender: Any) {
-        currentOperation = .addition
-        makeCalculation(operation: currentOperation)
-        updateDisplay(text: "0")
+        currentOperation = .noAction
+        makeCalculation(operation: .addition)
     }
     @IBAction func result(_ sender: Any) {
         makeCalculation(operation: currentOperation)

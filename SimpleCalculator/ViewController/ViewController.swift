@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     func afterOperation() {
         updateDisplay(text: result)
         firstNumber = Double(result)!
-        currentNumber = "0"
+        currentNumber = result
     }
     
     func numberPressed(number: Int) {
@@ -88,7 +88,13 @@ class ViewController: UIViewController {
                     print("Find percent")
                 }
                 
+                firstNumber = Double(result)!
+                if Double(result)!.truncatingRemainder(dividingBy: 1) == 0 {
+                    result = String(Int(Double(result)!))
+                }
+                updateDisplay(text: result)
             }
+            currentOperation = operation
         } else {
             firstNumber = Double(currentNumber)!
             currentNumber = "0"
@@ -103,27 +109,21 @@ class ViewController: UIViewController {
         acAction()
     }
     @IBAction func changeSign(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .changeSign)
     }
     @IBAction func percent(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .percent)
     }
     @IBAction func division(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .division)
     }
     @IBAction func multiplication(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .multiplication)
     }
     @IBAction func substraction(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .substraction)
     }
     @IBAction func addition(_ sender: Any) {
-        currentOperation = .noAction
         makeCalculation(operation: .addition)
     }
     @IBAction func result(_ sender: Any) {

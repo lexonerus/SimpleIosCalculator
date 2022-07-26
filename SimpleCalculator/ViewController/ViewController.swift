@@ -56,14 +56,24 @@ class ViewController: UIViewController {
         firstNumber = 0.0
         secondNumber = 0.0
         currentOperation = .noAction
-        currentNumber = "0"
+        currentNumber = ""
+        result = ""
         updateDisplay(text: currentNumber)
+        print(
+        """
+        current number = \(currentNumber)
+        first = \(firstNumber)
+        second = \(secondNumber)
+        result = \(result)
+        """
+        )
     }
     
     func makeCalculation(operation: Operation) {
         
+       
         if currentOperation != .noAction {
-            if currentNumber != "0" {
+            if currentNumber != "" {
                 secondNumber = Double(currentNumber)!
                 
                 switch operation {
@@ -71,16 +81,16 @@ class ViewController: UIViewController {
                     print("No action")
                 case .addition:
                     result = String(firstNumber + secondNumber)
-                    afterOperation()
+                    //afterOperation()
                 case .substraction:
                     result = String(firstNumber - secondNumber)
-                    afterOperation()
+                    //afterOperation()
                 case .division:
                     result = String(firstNumber / secondNumber)
-                    afterOperation()
+                    //afterOperation()
                 case .multiplication:
                     result = String(firstNumber * secondNumber)
-                    afterOperation()
+                    //afterOperation()
                 case .changeSign:
                     print("Change sign")
                 case .percent:
@@ -91,15 +101,28 @@ class ViewController: UIViewController {
                 if Double(result)!.truncatingRemainder(dividingBy: 1) == 0 {
                     result = String(Int(Double(result)!))
                 }
-                updateDisplay(text: result)
+                currentNumber = result
+                updateDisplay(text: currentNumber)
+                currentOperation = .noAction
+                
+
             }
-            currentOperation = operation
+
         } else {
-            firstNumber = Double(currentNumber)!
-            currentNumber = "0"
-            updateDisplay(text: currentNumber)
+            firstNumber = Double(currentNumber) ?? 0.0
+            currentNumber = ""
+            updateDisplay(text: "")
             currentOperation = operation
         }
+        
+        print(
+        """
+        current number = \(currentNumber)
+        first = \(firstNumber)
+        second = \(secondNumber)
+        result = \(result)
+        """
+        )
 
     }
     
@@ -136,6 +159,11 @@ class ViewController: UIViewController {
             updateDisplay(text: currentNumber)
         }
     }
+    
+    
+    
+    
+    // MARK: Number buttons
     @IBAction func zero(_ sender: Any) {
         numberPressed(number: 0)
     }

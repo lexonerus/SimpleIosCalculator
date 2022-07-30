@@ -67,12 +67,14 @@ class ViewController: UIViewController {
         result = \(result)
         """
         )
+        updateDisplay(text: "0")
     }
     
     func makeCalculation(operation: Operation) {
         
        
         if currentOperation != .noAction {
+            
             if currentNumber != "" {
                 secondNumber = Double(currentNumber)!
                 
@@ -94,7 +96,7 @@ class ViewController: UIViewController {
                 case .changeSign:
                     print("Change sign")
                 case .percent:
-                    print("Find percent")
+                    print("Percent")
                 }
                 
                 firstNumber = Double(result)!
@@ -131,10 +133,27 @@ class ViewController: UIViewController {
         acAction()
     }
     @IBAction func changeSign(_ sender: Any) {
-        makeCalculation(operation: .changeSign)
+        var temp = currentNumber
+        if temp.contains("-") {
+            let sign = ["-"]
+            temp = String(temp.filter { !sign.contains(String($0)) })
+            print(temp)
+            updateDisplay(text: temp)
+            currentNumber = temp
+        } else {
+            temp = "-" + currentNumber
+            print(temp)
+            updateDisplay(text: temp)
+            currentNumber = temp
+        }
     }
     @IBAction func percent(_ sender: Any) {
-        makeCalculation(operation: .percent)
+        if Int(currentNumber)! > 0 {
+            currentNumber = String(Double(currentNumber)! / 100)
+            updateDisplay(text: currentNumber)
+            result = currentNumber
+            firstNumber = Double(result)!
+        }
     }
     @IBAction func division(_ sender: Any) {
         makeCalculation(operation: .division)
@@ -143,7 +162,12 @@ class ViewController: UIViewController {
         makeCalculation(operation: .multiplication)
     }
     @IBAction func substraction(_ sender: Any) {
-        makeCalculation(operation: .substraction)
+        if (currentNumber == "0") || (currentNumber == "") {
+            currentNumber = "-"
+            updateDisplay(text: currentNumber)
+        } else {
+            makeCalculation(operation: .substraction)
+        }
     }
     @IBAction func addition(_ sender: Any) {
         makeCalculation(operation: .addition)

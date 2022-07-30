@@ -59,14 +59,16 @@ class ViewController: UIViewController {
         currentNumber = ""
         result = ""
         updateDisplay(text: currentNumber)
+        
         print(
-        """
-        current number = \(currentNumber)
-        first = \(firstNumber)
-        second = \(secondNumber)
-        result = \(result)
-        """
+            """
+            current number = \(currentNumber)
+            first = \(firstNumber)
+            second = \(secondNumber)
+            result = \(result)
+            """
         )
+        
         updateDisplay(text: "0")
     }
     
@@ -92,9 +94,11 @@ class ViewController: UIViewController {
                 }
                 
                 firstNumber = Double(result)!
+                
                 if Double(result)!.truncatingRemainder(dividingBy: 1) == 0 {
                     result = String(Int(Double(result)!))
                 }
+                
                 currentNumber = result
                 updateDisplay(text: currentNumber)
                 currentOperation = .noAction
@@ -110,13 +114,14 @@ class ViewController: UIViewController {
         }
         
         print(
-        """
-        current number = \(currentNumber)
-        first = \(firstNumber)
-        second = \(secondNumber)
-        result = \(result)
-        """
+            """
+            current number = \(currentNumber)
+            first = \(firstNumber)
+            second = \(secondNumber)
+            result = \(result)
+            """
         )
+        
 
     }
     

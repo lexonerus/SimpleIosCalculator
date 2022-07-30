@@ -83,20 +83,12 @@ class ViewController: UIViewController {
                     print("No action")
                 case .addition:
                     result = String(firstNumber + secondNumber)
-                    //afterOperation()
                 case .substraction:
                     result = String(firstNumber - secondNumber)
-                    //afterOperation()
                 case .division:
                     result = String(firstNumber / secondNumber)
-                    //afterOperation()
                 case .multiplication:
                     result = String(firstNumber * secondNumber)
-                    //afterOperation()
-                case .changeSign:
-                    print("Change sign")
-                case .percent:
-                    print("Percent")
                 }
                 
                 firstNumber = Double(result)!
@@ -148,12 +140,10 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func percent(_ sender: Any) {
-        if Int(currentNumber)! > 0 {
-            currentNumber = String(Double(currentNumber)! / 100)
-            updateDisplay(text: currentNumber)
-            result = currentNumber
-            firstNumber = Double(result)!
-        }
+        currentNumber = String(Double(currentNumber)! / 100)
+        updateDisplay(text: currentNumber)
+        result = currentNumber
+        firstNumber = Double(result)!
     }
     @IBAction func division(_ sender: Any) {
         makeCalculation(operation: .division)

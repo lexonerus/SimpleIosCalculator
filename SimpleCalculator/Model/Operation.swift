@@ -11,6 +11,4 @@ enum Operation {
     case substraction
     case division
     case multiplication
-    case changeSign
-    case percent
 }

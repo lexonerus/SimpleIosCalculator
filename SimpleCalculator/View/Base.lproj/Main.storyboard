@@ -21,8 +21,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gA-dB-s4m">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="0" textAlignment="right" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="DI7-YV-mTM">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="0" textAlignment="right" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="DI7-YV-mTM">
                                                 <rect key="frame" x="5" y="0.0" width="365" height="282"/>
+                                                <gestureRecognizers/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -34,6 +35,9 @@
                                             <constraint firstItem="DI7-YV-mTM" firstAttribute="leading" secondItem="4gA-dB-s4m" secondAttribute="leading" constant="5" id="JuW-VV-MYw"/>
                                             <constraint firstAttribute="bottom" secondItem="DI7-YV-mTM" secondAttribute="bottom" id="q71-CF-biK"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ruC-uC-pd0" appends="YES" id="ucT-D2-NUd"/>
+                                        </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="BRY-4a-J8k">
                                         <rect key="frame" x="0.0" y="284" width="375" height="75"/>
@@ -364,6 +368,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="ruC-uC-pd0">
+                    <connections>
+                        <action selector="swipeLeftOnDisplay:" destination="BYZ-38-t0r" id="tv2-bY-ScB"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.25" y="84.507042253521121"/>
         </scene>

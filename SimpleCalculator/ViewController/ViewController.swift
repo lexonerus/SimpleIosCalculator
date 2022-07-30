@@ -29,6 +29,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         display.text = currentNumber
     }
+    
+    @IBAction func swipeLeftOnDisplay(_ sender: Any) {
+        currentNumber.removeLast()
+        updateDisplay(text: currentNumber)
+    }
+    
 
     func updateDisplay(text: String) {
         DispatchQueue.main.async {

@@ -14,13 +14,35 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvz-k6-UGX">
+                                <rect key="frame" x="99.5" y="369" width="215" height="168"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="140"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="НА ПРАКТИКЕ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOJ-bL-L3H">
+                                <rect key="frame" x="99" y="507" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.076813302929999994" green="0.076813332740000004" blue="0.076813302929999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="13I-b0-6mD"/>
+                            <constraint firstItem="Jvz-k6-UGX" firstAttribute="centerX" secondItem="SOJ-bL-L3H" secondAttribute="centerX" id="4gR-DP-hwt"/>
+                            <constraint firstItem="SOJ-bL-L3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="99" id="OyY-1l-zL7"/>
+                            <constraint firstItem="SOJ-bL-L3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="463" id="aFd-p1-dVB"/>
+                            <constraint firstItem="SOJ-bL-L3H" firstAttribute="bottom" secondItem="Jvz-k6-UGX" secondAttribute="bottom" id="hdt-A7-VT2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SOJ-bL-L3H" secondAttribute="bottom" constant="325" id="o1w-tE-YO3"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
 </document>

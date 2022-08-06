@@ -5,7 +5,7 @@
 //  Created by Alex Krzywicki on 25.07.2022.
 //
 
-enum Operation {
+enum Operations {
     case noAction
     case addition
     case substraction

@@ -8,46 +8,44 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // MARK: Outlets for UI
+    
+    // MARK: Views
     @IBOutlet weak var display: UITextField!
     
     // MARK: Properties
-    private var currentOperation = Operation.noAction
+    private var currentOperation = Operations.noAction
     private var currentNumber   = "0"
     private var firstNumber     = 0.0
     private var secondNumber    = 0.0
     private var isDouble        = false
     private var result          = ""
+    
+    // MARK: Config appearance
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
        get {
           return .portrait
        }
     }
     
-    // MARK: App lifecycle
+    // MARK: ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         display.text = currentNumber
     }
-    
-    @IBAction func swipeLeftOnDisplay(_ sender: Any) {
-        currentNumber.removeLast()
-        updateDisplay(text: currentNumber)
-    }
-    
+}
 
+// MARK: Private Methods
+private extension ViewController {
     func updateDisplay(text: String) {
         DispatchQueue.main.async {
             self.display.text = text
         }
     }
-    
     func afterOperation() {
         updateDisplay(text: result)
         firstNumber = Double(result)!
         currentNumber = result
     }
-    
     func numberPressed(number: Int) {
         if currentNumber != "0" {
             currentNumber.append(String(number))
@@ -57,7 +55,6 @@ class ViewController: UIViewController {
             updateDisplay(text: currentNumber)
         }
     }
-    
     func acAction() {
         firstNumber = 0.0
         secondNumber = 0.0
@@ -77,10 +74,7 @@ class ViewController: UIViewController {
         
         updateDisplay(text: "0")
     }
-    
-    func makeCalculation(operation: Operation) {
-        
-       
+    func makeCalculation(operation: Operations) {
         if currentOperation != .noAction {
             
             if currentNumber != "" {
@@ -127,11 +121,12 @@ class ViewController: UIViewController {
             result = \(result)
             """
         )
-        
 
     }
-    
-    // MARK: Button actions
+}
+
+// MARK: Private Actions
+private extension ViewController {
     @IBAction func acPressed(_ sender: Any) {
         acAction()
     }
@@ -184,41 +179,18 @@ class ViewController: UIViewController {
             updateDisplay(text: currentNumber)
         }
     }
-    
-    
-    
-    
-    // MARK: Number buttons
-    @IBAction func zero(_ sender: Any) {
-        numberPressed(number: 0)
+    @IBAction func swipeLeftOnDisplay(_ sender: Any) {
+        currentNumber.removeLast()
+        updateDisplay(text: currentNumber)
     }
-    @IBAction func one(_ sender: Any) {
-        numberPressed(number: 1)
+    @IBAction func numberAction(_ sender: UIButton) {
+        if currentNumber != "0" {
+            currentNumber.append(String(sender.tag))
+            updateDisplay(text: currentNumber)
+        } else {
+            currentNumber = String(sender.tag)
+            updateDisplay(text: currentNumber)
+        }
     }
-    @IBAction func two(_ sender: Any) {
-        numberPressed(number: 2)
-    }
-    @IBAction func three(_ sender: Any) {
-        numberPressed(number: 3)
-    }
-    @IBAction func four(_ sender: Any) {
-        numberPressed(number: 4)
-    }
-    @IBAction func five(_ sender: Any) {
-        numberPressed(number: 5)
-    }
-    @IBAction func six(_ sender: Any) {
-        numberPressed(number: 6)
-    }
-    @IBAction func seven(_ sender: Any) {
-        numberPressed(number: 7)
-    }
-    @IBAction func eight(_ sender: Any) {
-        numberPressed(number: 8)
-    }
-    @IBAction func nine(_ sender: Any) {
-        numberPressed(number: 9)
-    }
-    
 }
 

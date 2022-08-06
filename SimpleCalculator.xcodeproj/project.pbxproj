@@ -13,7 +13,7 @@
 		5699580E288E7FF7000237B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5699580C288E7FF7000237B6 /* Main.storyboard */; };
 		56995810288E7FFB000237B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5699580F288E7FFB000237B6 /* Assets.xcassets */; };
 		56995813288E7FFB000237B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56995811288E7FFB000237B6 /* LaunchScreen.storyboard */; };
-		56995822288EC03C000237B6 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56995821288EC03C000237B6 /* Operation.swift */; };
+		56995822288EC03C000237B6 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56995821288EC03C000237B6 /* Operations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		5699580F288E7FFB000237B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56995812288E7FFB000237B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56995814288E7FFB000237B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56995821288EC03C000237B6 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		56995821288EC03C000237B6 /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				5699581D288EA4F9000237B6 /* Assets */,
-				56995821288EC03C000237B6 /* Operation.swift */,
+				56995821288EC03C000237B6 /* Operations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			files = (
 				5699580B288E7FF7000237B6 /* ViewController.swift in Sources */,
 				56995807288E7FF7000237B6 /* AppDelegate.swift in Sources */,
-				56995822288EC03C000237B6 /* Operation.swift in Sources */,
+				56995822288EC03C000237B6 /* Operations.swift in Sources */,
 				56995809288E7FF7000237B6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

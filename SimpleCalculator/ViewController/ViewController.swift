@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     
     // MARK: Properties
     private var currentOperation = Operations.noAction
-    private var currentNumber   = "0"
-    private var firstNumber     = 0.0
-    private var secondNumber    = 0.0
-    private var isDouble        = false
-    private var result          = ""
+    private var currentNumber    = "0"
+    private var firstNumber      = 0.0
+    private var secondNumber     = 0.0
+    private var isDouble         = false
+    private var result           = ""
     
     // MARK: Config appearance
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -36,33 +36,7 @@ class ViewController: UIViewController {
 
 // MARK: Private Methods
 private extension ViewController {
-    func updateDisplay(text: String) {
-        DispatchQueue.main.async {
-            self.display.text = text
-        }
-    }
-    func afterOperation() {
-        updateDisplay(text: result)
-        firstNumber = Double(result)!
-        currentNumber = result
-    }
-    func numberPressed(number: Int) {
-        if currentNumber != "0" {
-            currentNumber.append(String(number))
-            updateDisplay(text: currentNumber)
-        } else {
-            currentNumber = String(number)
-            updateDisplay(text: currentNumber)
-        }
-    }
-    func acAction() {
-        firstNumber = 0.0
-        secondNumber = 0.0
-        currentOperation = .noAction
-        currentNumber = ""
-        result = ""
-        updateDisplay(text: currentNumber)
-        
+    func status() {
         print(
             """
             current number = \(currentNumber)
@@ -71,7 +45,22 @@ private extension ViewController {
             result = \(result)
             """
         )
-        
+    }
+    
+    func updateDisplay(text: String) {
+        DispatchQueue.main.async {
+            self.display.text = text
+        }
+    }
+
+    func acAction() {
+        firstNumber = 0.0
+        secondNumber = 0.0
+        currentOperation = .noAction
+        currentNumber = ""
+        result = ""
+        updateDisplay(text: currentNumber)
+        status()
         updateDisplay(text: "0")
     }
     func makeCalculation(operation: Operations) {
@@ -98,12 +87,9 @@ private extension ViewController {
                 if Double(result)!.truncatingRemainder(dividingBy: 1) == 0 {
                     result = String(Int(Double(result)!))
                 }
-                
                 currentNumber = result
                 updateDisplay(text: currentNumber)
                 currentOperation = .noAction
-                
-
             }
 
         } else {
@@ -113,14 +99,7 @@ private extension ViewController {
             currentOperation = operation
         }
         
-        print(
-            """
-            current number = \(currentNumber)
-            first = \(firstNumber)
-            second = \(secondNumber)
-            result = \(result)
-            """
-        )
+        status()
 
     }
 }

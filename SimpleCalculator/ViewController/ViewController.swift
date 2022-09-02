@@ -39,7 +39,9 @@ class ViewController: UIViewController {
 private extension ViewController {
     func configureAppearance() {
         setupMainVStack()
+        setupTextField()
         setupButtons()
+        
     }
 
     func setupMainVStack() {
@@ -69,41 +71,47 @@ private extension ViewController {
     }
     
     func setupButtons() {
-        let line1 = createHStack(yPosition: 0)
+        let line1 = createHStack(yPosition: Int(display.frame.height)+0)
         line1.addSubview(createButton(order: 0, title: "button 1"))
         line1.addSubview(createButton(order: 1, title: "button 2"))
         line1.addSubview(createButton(order: 2, title: "button 3"))
         line1.addSubview(createButton(order: 3, title: "button 4"))
         mainVStack.addSubview(line1)
         
-        let line2 = createHStack(yPosition: 82)
+        let line2 = createHStack(yPosition: Int(display.frame.height)+82)
         line2.addSubview(createButton(order: 0, title: "button 5"))
         line2.addSubview(createButton(order: 1, title: "button 6"))
         line2.addSubview(createButton(order: 2, title: "button 7"))
         line2.addSubview(createButton(order: 3, title: "button 8"))
         mainVStack.addSubview(line2)
         
-        let line3 = createHStack(yPosition: 164)
+        let line3 = createHStack(yPosition: Int(display.frame.height)+164)
         line3.addSubview(createButton(order: 0, title: "button 9"))
         line3.addSubview(createButton(order: 1, title: "button 10"))
         line3.addSubview(createButton(order: 2, title: "button 11"))
         line3.addSubview(createButton(order: 3, title: "button 12"))
         mainVStack.addSubview(line3)
         
-        let line4 = createHStack(yPosition: 246)
+        let line4 = createHStack(yPosition: Int(display.frame.height)+246)
         line4.addSubview(createButton(order: 0, title: "button 9"))
         line4.addSubview(createButton(order: 1, title: "button 10"))
         line4.addSubview(createButton(order: 2, title: "button 11"))
         line4.addSubview(createButton(order: 3, title: "button 12"))
         mainVStack.addSubview(line4)
         
-        let line5 = createHStack(yPosition: 328)
+        let line5 = createHStack(yPosition: Int(display.frame.height)+328)
         line5.addSubview(createButton(order: 0, title: "button 13"))
         line5.addSubview(createButton(order: 1, title: "button 14"))
         line5.addSubview(createButton(order: 2, title: "button 15"))
         line5.addSubview(createButton(order: 3, title: "button 16"))
         mainVStack.addSubview(line5)
     
+    }
+    
+    func setupTextField() {
+        display.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: mainVStack.frame.height - 410-60-30)
+        display.backgroundColor = .lightGray
+        mainVStack.addSubview(display)
     }
 }
 

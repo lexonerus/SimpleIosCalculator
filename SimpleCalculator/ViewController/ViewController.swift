@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         service = CalcService(displayView: self)
         // 2
         configureAppearance()
+        updateDisplay(text: "0")
     }
 
     func updateDisplay(text: String) {
@@ -39,13 +40,36 @@ class ViewController: UIViewController {
         }
     }
     
+    // 10
     @objc func buttonPressed(_ sender: UIButton) {
-        print(sender.tag)
-        updateDisplay(text: String(sender.tag))
+        switch sender.tag {
+        case 0...9:
+            service?.numberAction(number: sender.tag)
+        case 10:
+            service?.dot()
+        case 11:
+            service?.makeResult()
+        case 12:
+            service?.addition()
+        case 13:
+            service?.substraction()
+        case 14:
+            service?.multiplication()
+        case 15:
+            service?.acAction()
+        case 16:
+            service?.changeSign()
+        case 17:
+            service?.percent()
+        case 18:
+            service?.division()
+        default:
+            break
+        }
     }
 }
 
-// MARK: Private Actions
+// MARK: Private Methods
 private extension ViewController {
     // 3
     func configureAppearance() {
@@ -133,13 +157,13 @@ private extension ViewController {
     func setupLine1() {
         let line1 = createHStack(yPosition: Int(displayView.frame.height)+0)
         
-        let acButton = createButton(order: 0, title: "AC", tag: 13)
+        let acButton = createButton(order: 0, title: "AC", tag: 15)
         acButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let changeSignButton = createButton(order: 1, title: "+/-", tag: 14)
+        let changeSignButton = createButton(order: 1, title: "+/-", tag: 16)
         changeSignButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let percentButton = createButton(order: 2, title: "%", tag: 15)
+        let percentButton = createButton(order: 2, title: "%", tag: 17)
         percentButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let divButton = createButton(order: 3, title: "/", tag: 16)
+        let divButton = createButton(order: 3, title: "/", tag: 18)
         divButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         line1.addSubview(acButton)
@@ -158,7 +182,7 @@ private extension ViewController {
         eightButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         let nineButton = createButton(order: 2, title: "9", tag: 9)
         nineButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let multButton = createButton(order: 3, title: "*", tag: 12)
+        let multButton = createButton(order: 3, title: "*", tag: 14)
         multButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         line2.addSubview(sevenButton)
@@ -177,7 +201,7 @@ private extension ViewController {
         fiveButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         let sixButton = createButton(order: 2, title: "6", tag: 6)
         sixButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let subsButton = createButton(order: 3, title: "-", tag: 11)
+        let subsButton = createButton(order: 3, title: "-", tag: 13)
         subsButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         
@@ -197,7 +221,7 @@ private extension ViewController {
         twoButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         let threeButton = createButton(order: 2, title: "3", tag: 3)
         threeButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let plusButton = createButton(order: 3, title: "+", tag: 10)
+        let plusButton = createButton(order: 3, title: "+", tag: 12)
         plusButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         line4.addSubview(oneButton)
@@ -218,9 +242,9 @@ private extension ViewController {
         zeroButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         zeroButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         
-        let dotButton = createButton(order: 2, title: ".", tag: 17)
+        let dotButton = createButton(order: 2, title: ".", tag: 10)
         dotButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        let equalButton = createButton(order: 3, title: "=", tag: 18)
+        let equalButton = createButton(order: 3, title: "=", tag: 11)
         equalButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         line5.addSubview(zeroButton)
